@@ -1,0 +1,29 @@
+[33mcommit 3877eff2bd551d2a59897fb10112014485ebb5eb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Prince Bharti <Prince.pbharti667@gmail.com>
+Date:   Wed Jul 19 12:22:09 2023 +0530
+
+    add assets and views
+
+[33mcommit 7a338e59eb90984ff8b6daf5527f9643e8fb8b99[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Prince Bharti <Prince.pbharti667@gmail.com>
+Date:   Sun Jul 16 23:38:50 2023 +0530
+
+    add a new add post controllers and router and set view engine
+
+[33mcommit ce94f430b22230932c39a3b7250ced9e44e4fcc9[m
+Author: Prince Bharti <Prince.pbharti667@gmail.com>
+Date:   Sun Jul 16 23:23:40 2023 +0530
+
+    add user controller and user router
+
+[33mcommit d0acd386156d6b9e891a145cc327570f5f3b2516[m
+Author: Prince Bharti <Prince.pbharti667@gmail.com>
+Date:   Sun Jul 16 22:46:14 2023 +0530
+
+    add a controller and a router for home
+
+[33mcommit 48e63437861512040492cdbe6cae2ca2f9669168[m
+Author: Prince Bharti <Prince.pbharti667@gmail.com>
+Date:   Sun Jul 16 20:35:58 2023 +0530
+
+    First commit: Create first project

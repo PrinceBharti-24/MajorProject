@@ -2,10 +2,14 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const expressLayout = require('express-ejs-layouts');
+const db = require('./config/mongoose');
+const cookieParser = require('cookie-parser');
 
 app.use(express.static('./assets'));
 
 app.use(expressLayout);
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // set up the layout for script and style so that it will automatically set in the head and body respectively
 app.set('layout extractStyles', true);
