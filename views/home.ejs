@@ -1,4 +1,23 @@
-        <h1>
-            MajorProject /<%= title%>
-        </h1>
-        
+<h1>
+    MajorProject /<%= title%>
+</h1>
+<section id="feed-post">
+    <form action="/posts/create" method="post">
+        <textarea name="content" cols="30" rows="10">
+        </textarea>
+        <input type="submit" value="Post">
+    </form>
+    <div class="container-list">
+        <ul>
+            <% for(post of posts){%>
+                <li>
+                    <p>
+                        <%= post.content %>
+                        <br>
+                        <%= post.user.name %>
+                    </p>
+                </li>
+            <%} %>
+        </ul>
+    </div>
+</section>
