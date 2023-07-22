@@ -2,11 +2,14 @@
     MajorProject /<%= title%>
 </h1>
 <section id="feed-post">
-    <form action="/posts/create" method="post">
-        <textarea name="content" cols="30" rows="10">
-        </textarea>
-        <input type="submit" value="Post">
-    </form>
+    <h4>Posts</h4>
+    <% if(locals.user){%>
+        <form action="/posts/create" method="post">
+            <textarea name="content" cols="30" rows="10">
+            </textarea>
+            <input type="submit" value="Post">
+        </form>
+    <%} %>
     <div class="container-list">
         <ul>
             <% for(post of posts){%>
