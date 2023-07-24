@@ -5,7 +5,14 @@ module.exports.home = async function(req, res){
     // res.cookie('newCookie', 'i have set it')
     try{
         // populate the user for all the post
-        const posts = await Post.find({}).populate('user').exec();
+        const posts = await Post.find({}).populate('user')
+        .populate({
+            path: 'comment',
+            populate : {
+                path: 'user'
+            }
+        })
+        .exec();
         return res.render('home', {
             title: 'Home',
             posts: posts

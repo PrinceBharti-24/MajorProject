@@ -4,7 +4,7 @@ const User = require('../models/users');
 
 passport.use(new LocalStrategy({
     usernameField: 'email'
-},
+}, 
 // callback funciton to check the user and password in the database
 async function(email, password, done){
     try{
@@ -13,7 +13,7 @@ async function(email, password, done){
             console.log('Invalid username/password');
             return done(null, false);
         }
-        return done(null, user);
+        return done(null, user); 
     }
     catch(err){
         console.log('error in finding the user from the database', err);

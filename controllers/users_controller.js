@@ -47,7 +47,7 @@ module.exports.Create = async function(req, res) {
     } catch (err) {
         console.log('error in finding/creating user while signing up', err);
         return res.redirect('back');
-    }
+    } 
 };
 
 // get the signIn and create a session for the user
