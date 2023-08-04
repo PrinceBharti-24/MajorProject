@@ -11,6 +11,7 @@ const customMware = require('./config/middleware');
 const session = require('express-session');
 const passport = require('passport');
 const localStrategy = require('./config/passport-local-strategy');
+const JWTStrategy = require('./config/passport-jwt-strategy');
 
 // using mongo store for storage of cookie even after server restarts
 const MongoStore = require('connect-mongo');
