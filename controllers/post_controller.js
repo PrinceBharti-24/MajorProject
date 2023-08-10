@@ -1,11 +1,23 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+
 module.exports.create = async function(req, res){
     try{
-        await Post.create({
+        let post = await Post.create({
             content: req.body.content,
             user: req.user._id
         })
+
+        if(req.xhr){
+          post = await post.populate('user', 'name')
+          return res.status(200).json({
+            data: {
+              post: post
+            },
+            message: "Post created"
+          })
+        }
+        req.flash('success', "Post created successfully");
         return res.redirect('back');
     }
     catch(err){
@@ -23,8 +35,19 @@ module.exports.destroyPost = async function(req, res) {
       if (!post) {
         return res.redirect('back');
       }
+
+      if(req.xhr){
+        console.log('yes i am in')
+        return res.status(200).json({
+          data: {
+            post_id: req.params.id
+          },
+          message: "Post deleted"
+        })
+      }
   
       // Also, delete the associated comments of the post
+      req.flash('success', "Post deleted")
       await Comment.deleteMany({ post: req.params.id });
   
       // Redirect back to the previous page after successful deletion
