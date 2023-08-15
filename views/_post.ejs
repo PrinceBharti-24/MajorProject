@@ -11,16 +11,16 @@
     </p>
     <div class="post-comments">
       <% if(locals.user){ %>
-      <form action="/comments/create" method="post">
+      <form action="/comments/create" method="post" id="new-comment">
         <input type="text" name="content" placeholder="post a comment.." required />
         <input type="hidden" name="post" value="<%= post._id%>" / required>
         <input type="submit" value="Add comment" />
       </form>
       <% } %>
       <div class="post-comments-list">
-        <ul id="post-comments-<%= post._id%>">
+        <ul class="post-comments-<%= post._id%>">
           <%for(comment of post.comment){%>
-            <%- include('_comment.ejs')%>
+            <%- include('_comment.ejs') -%>
           <%} %>
         </ul>
       </div>

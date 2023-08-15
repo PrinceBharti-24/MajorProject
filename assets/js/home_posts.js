@@ -76,6 +76,47 @@
         })
     }
 
+    // create a method for making the ajax request for comments
+
+    let createComment = function(){
+      let newComment = $('#new-comment');
+      newComment.submit(function(e){
+        e.preventDefault();
+        
+        $.ajax({
+          type: 'post',
+          url: '/comments/create',
+
+          data: newComment.serialize(),
+          success: function(data){
+            console.log(data);
+            let newCommentDom = commentDOM(data.data.comment);
+            $('.post-comments-list > ul').prepend(newCommentDom);
+          },
+          error: function(err){
+            console.log(err.responseText);
+          }
+        })
+      })
+    }
+
+    // new comment DOM
+
+    let commentDOM = function(comment){
+      return $(`<li id="comment-${comment._id}">
+      <p>
+        <small>
+          <a href="/comments/destroy/${comment.id}">X</a>
+        </small>
+        ${comment.content}
+         <br>
+         <small> ${comment.user.name} </small>
+        </p>
+    </li>`)
+    }
+
+    createComment();
+
     createPost();
     
 }

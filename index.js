@@ -6,6 +6,7 @@ const db = require('./config/mongoose');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const multer = require('multer');
 
 // for session cookies
 const session = require('express-session');
@@ -22,6 +23,9 @@ app.use(express.static('./assets'));
 app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// make the upload path available to browser
+app.use('/uploads' , express.static(__dirname + '/uploads'))
 
 // set up the layout for script and style so that it will automatically set in the head and body respectively
 app.set('layout extractStyles', true);
@@ -69,3 +73,6 @@ app.listen(port, function(err){
         console.log(`Running succeesfully on port: ${port}`);
     }
 })
+
+
+// whatsapp no 6202325843

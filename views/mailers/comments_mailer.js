@@ -4,7 +4,7 @@ module.exports.newComment = (comment) => {
     console.log('Inside new Comment mailer');
 
     nodemailer.transporter.sendMail({
-        from: 'project@gmail.com',
+        from: 'pbharti667@gmail.com',
         to: comment.user.email,
         subject: 'new Comment Published',
         html: '<h1>Your Comment is now published</h1>'

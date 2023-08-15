@@ -1,21 +1,36 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
+const commentsMailer = require('../mailers/comments_mailer');
 
 module.exports.create = async function (req, res) {
   try {
-    const post = await Post.findById(req.body.post);
+    let post = await Post.findById(req.body.post);
     if (post) {
-      const comment = await Comment.create({
+      let comment = await Comment.create({
         content: req.body.content,
         post: req.body.post,
         user: req.user._id,
       });
-      if (comment) {
-        post.comment.push(comment);
-        post.save();
+      post.comment.push(comment);
+      post.save();
 
-        res.redirect("/");
+      comment = await comment.populate('user', 'name email');
+      commentsMailer.newComment(comment);
+
+      if(req.xhr){
+        
+        return res.status(200).json({
+          data: {
+            comment: comment
+          },
+          message: "Comment Created Successfully"
+        })
+        
       }
+      req.flash("success", "Comments created");
+      
+      res.redirect('/');
+      
     } else {
       console.log("post does not exist");
       return;
@@ -24,6 +39,7 @@ module.exports.create = async function (req, res) {
     console.log("error in creating a comment", err);
   }
 };
+
 
 module.exports.destroy = async function(req, res){
   try{
@@ -44,3 +60,6 @@ module.exports.destroy = async function(req, res){
     console.log('error in deleting the comment', err);
   }
 }
+
+
+
