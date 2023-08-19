@@ -7,6 +7,7 @@ router.use('/users', require('./users'));
 router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
 router.use('/api', require('./api/index'))
+router.use('/likes', require('./likes'));
 
 console.log('router loaded successfully');
 

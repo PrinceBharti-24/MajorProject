@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const Like = require('../models/likes');
 
 module.exports.create = async function(req, res){
     try{
@@ -30,6 +31,9 @@ module.exports.destroyPost = async function(req, res) {
     try {
       // Find the post by ID and delete it
       const post = await Post.findByIdAndDelete(req.params.id);
+
+      await Like.deleteMany({likeable: post, onModel: 'Post'});
+      await Like.deleteMany({_id: {$in: post.comment}});
   
       // If post not found or deleted successfully, redirect back
       if (!post) {

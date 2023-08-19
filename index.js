@@ -73,6 +73,3 @@ app.listen(port, function(err){
         console.log(`Running succeesfully on port: ${port}`);
     }
 })
-
-
-// whatsapp no 6202325843
